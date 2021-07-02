@@ -1,0 +1,29 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: white;
+  background: black;
+}
+
+.grid {
+  display: grid;
+  grid: repeat(12, 1fr)/repeat(12, 1fr);
+  height: 100vh;
+  width: 100vw;
+  place-items: center;
+}
+
+.Text {
+  grid-area: 1/5/13/8;
+  // border: 1px solid white;
+}
+
+.PlayerState {
+  grid-area: 1/1/13/4;
+
+}
+
+.EnemyState {
+  grid-area: 1/9/13/13;
+}

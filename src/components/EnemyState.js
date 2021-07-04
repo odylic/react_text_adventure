@@ -7,21 +7,20 @@ export default function EnemyState() {
   // initial state set in EnemyContext
   const [enemy, setEnemyState] = useContext(EnemyContext);
   useEffect(() => {
-    console.log('enemy: ', enemy);
+    // console.log('enemy: ', enemy);
   });
 
   return (
     <div className="EnemyState">
-      {enemy.map((monster, index) => (
+      {Object.values(enemy).map((monster, index) => (
         <div key={index}>
-          {monster.hp < 0
-            ? `${monster.type} died`
-            : `Enemy ${index+1}:
-               ${monster.type} 
-               hp: ${monster.hp}`}
+          Enemy {index} <br></br>
+          {console.log(monster)}
+          {monster.type} <br></br>
+          {monster.hp} <br></br>
+          <br></br>
         </div>
       ))}
-
     </div>
   );
 }

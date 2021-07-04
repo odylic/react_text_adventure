@@ -10,7 +10,7 @@ export default function EnterBattle() {
   const [enemy, setEnemyState] = useContext(EnemyContext);
   const [text, setText] = useContext(TextContext);
   return (
-    <div className="Text">
+    <div>
       <button
         onClick={async (e) => {
           e.preventDefault();
@@ -64,7 +64,18 @@ export default function EnterBattle() {
         Marle Shoots CrossBow
       </button>
       <br></br>
-      Battle And every things that goes with this
+      Should go to Ryu's battle screen
+      Attack
+      Technique
+      Magic
+      Items <br></br><br></br>
+
+      The Next screen after should go to attack which enemy or back
+      or technique magic spell list then which enemy to attack
+
+      Technique and Magic SP list could be bought and unlocked with Skill points and level unlocking
+
+      Alongside equipment, could also have technique, side technique, react ability, passive, mobility
     </div>
   );
 }

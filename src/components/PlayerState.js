@@ -7,7 +7,7 @@ export default function PlayerState() {
   const [inventory, setInventory] = useContext(InventoryContext);
   const [view, setView] = useState('status');
   useEffect(() => {
-    console.log('player: ', player);
+    // console.log('player: ', player);
   });
 
   return (
@@ -77,12 +77,20 @@ export default function PlayerState() {
             <div key={index}>
               {character.name} <br></br>
               helmet: {character.equipment.helmet} <br></br>
-              right hand: {character.equipment.rightHand} <br></br>
-              left hand: {character.equipment.leftHand} <br></br>
+              {character.equipment.bothHands ? (
+                <div>
+                  both hands: {character.equipment.bothHands}
+                </div>
+              ) : (
+                <div>
+                  right hand: {character.equipment.rightHand} <br></br>
+                  left hand: {character.equipment.leftHand} <br></br>
+                </div>
+              )}
               armor: {character.equipment.armor} <br></br>
               boots: {character.equipment.boots} <br></br>
               <br></br>
-            </div> 
+            </div>
           ))}
         </div>
       ) : (

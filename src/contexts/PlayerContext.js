@@ -11,6 +11,7 @@ export const PlayerProvider = (props) => {
       exp: 10,
       equipment: {
         helmet: 'bronze helmet',
+        leftHand: 'iron sword',
       },
     },
     {
@@ -19,8 +20,7 @@ export const PlayerProvider = (props) => {
       hp: 8,
       exp: 10,
       equipment: {
-        leftHand: 'crossbow',
-        rightHand: 'crossbow',
+        bothHands: 'crossbow',
       },
     },
   ]);

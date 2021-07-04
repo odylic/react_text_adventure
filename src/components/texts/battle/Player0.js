@@ -6,6 +6,17 @@ export default function Player0() {
   const [text, setText] = useContext(TextContext);
   return (
     <div>
+      {/* back */}
+      <button
+        onClick={(e) => {
+          e.preventDefault();
+          setText('Start');
+        }}
+      >
+        Back
+      </button>
+      <br></br>
+      <br></br>
       {/* attack */}
       <button
         onClick={(e) => {
@@ -14,16 +25,37 @@ export default function Player0() {
         }}
       >
         Attack
-      </button> 
+      </button>
       <br></br>
       {/* technique */}
-      <button>Technique</button>
+      <button
+        onClick={(e) => {
+          e.preventDefault();
+          setText('Techniques');
+        }}
+      >
+        Technique
+      </button>
       <br></br>
       {/* magic */}
-      <button>Magic</button>
+      <button
+        onClick={(e) => {
+          e.preventDefault();
+          setText('Magic');
+        }}
+      >
+        Magic
+      </button>
       <br></br>
       {/* items */}
-      <button>Items</button>
+      <button
+        onClick={(e) => {
+          e.preventDefault();
+          setText('Item');
+        }}
+      >
+        Items
+      </button>
     </div>
   );
 }

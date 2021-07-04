@@ -5,6 +5,7 @@ import {TextProvider} from '../contexts/TextContext';
 import {EnemyProvider} from '../contexts/EnemyContext';
 import {PlayerProvider} from '../contexts/PlayerContext';
 import {InventoryProvider} from '../contexts/InventoryContext';
+import {AttackProvider} from '../contexts/AttackContext';
 
 export default function ContextContainer() {
   return (
@@ -14,7 +15,9 @@ export default function ContextContainer() {
           <TextProvider>
             <PlayerProvider>
               <EnemyProvider>
-                <App />
+                <AttackProvider>
+                  <App />
+                </AttackProvider>
               </EnemyProvider>
             </PlayerProvider>
           </TextProvider>

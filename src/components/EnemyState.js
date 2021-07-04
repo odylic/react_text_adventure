@@ -14,10 +14,9 @@ export default function EnemyState() {
     <div className="EnemyState">
       {Object.values(enemy).map((monster, index) => (
         <div key={index}>
-          Enemy {index} <br></br>
-          {console.log(monster)}
+          Enemy {index + 1} <br></br>
           {monster.type} <br></br>
-          {monster.hp} <br></br>
+          {monster.hp > 0 ? monster.hp : 0} <br></br>
           <br></br>
         </div>
       ))}

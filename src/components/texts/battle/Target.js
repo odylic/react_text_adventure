@@ -7,15 +7,23 @@ export default function Target() {
   const [text, setText] = useContext(TextContext);
   return (
     <div>
+      <button
+        onClick={(e) => {
+          e.preventDefault(
+            setText('Player0')
+          )
+        }}
+      >Back</button>
+      <br></br>
+      <br></br>
       {Object.values(enemy).map((monster, index) => (
         <div key={index}>
           <button
             onClick={(e) => {
               e.preventDefault();
-              console.log(typeof(index), index)
               setEnemyState((prevState) => ({
                 ...prevState,
-                // make it realize i'm referencing a variable instead of a string
+                // use [] to have it recognize as a variable
                 [index]: {
                   ...enemy[index],
                   hp: enemy[index].hp - 2,
@@ -23,7 +31,7 @@ export default function Target() {
               }));
             }}
           >
-            Enemy {index}
+            Enemy {index+1}
             <br></br>
             {monster.type}
           </button>

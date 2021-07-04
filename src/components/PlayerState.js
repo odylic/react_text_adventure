@@ -43,13 +43,14 @@ export default function PlayerState() {
       {/* renders the status screen */}
       {view === 'status' ? (
         <div>
-          {player.map((character, index) => (
+          {Object.values(player).map((character, index) => (
             <div key={index}>
               {character.name}
               <br></br>
               lvl : {character.lvl} <br></br>
               hp: {character.hp} <br></br>
               exp: {character.exp} <br></br>
+              mana: {character.mana > 0 ? character.mana : 0} <br></br>
               <br></br>
             </div>
           ))}
@@ -73,7 +74,7 @@ export default function PlayerState() {
       {/* renders the equipment screen */}
       {view === 'equipment' ? (
         <div>
-          {player.map((character, index) => (
+          {Object.values(player).map((character, index) => (
             <div key={index}>
               {character.name} <br></br>
               helmet: {character.equipment.helmet} <br></br>

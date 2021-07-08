@@ -24,7 +24,7 @@ export default function Techniques() {
       <button
         onClick={(e) => {
           e.preventDefault();
-          setText('Techniques');
+          setText('Magic');
           setNarration('Choose');
         }}
       >
@@ -32,7 +32,7 @@ export default function Techniques() {
       </button>
       <br></br>
       <br></br>
-      {/* renders player0's mana cost and damage*/}
+      {/* handles player0's state */}
       {playerTurn === 'Player0' ? (
         <div>
           {Object.values(enemy).map((monster, index) => (
@@ -71,7 +71,7 @@ export default function Techniques() {
       ) : (
         ''
       )}
-      {/* renders player1's mana cost and damage*/}
+      {/* handles player1's state */}
       {playerTurn === 'Player1' ? (
         <div>
           {Object.values(enemy).map((monster, index) => (

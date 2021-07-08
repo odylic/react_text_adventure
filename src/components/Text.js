@@ -10,12 +10,23 @@ import Techniques from './texts/battle/Techniques';
 import Magic from './texts/battle/Magic';
 import Item from './texts/battle/Item';
 import TargetTech from './texts/battle/TargetTech';
+import TargetMagic from './texts/battle/TargetMagic';
+import {PlayerTurnContext} from '../contexts/PlayerTurnContext';
+import {NarrationContext} from '../contexts/NarrationContext';
+import {TargetContext} from '../contexts/TargetContext';
 
 export default function Text() {
   const [text, setText] = useContext(TextContext);
   const [player, setPlayerState] = useContext(PlayerContext);
+  const [playerTurn, setPlayerTurn] = useContext(PlayerTurnContext);
+  const [narration, setNarration] = useContext(NarrationContext);
+  const [target, setTarget] = useContext(TargetContext);
+
+
   useEffect(() => {
     console.log('textState: ', text);
+    // console.log('target:', target);
+    // console.log('playerTurn:', playerTurn);
   });
   return (
     <div className="Text">
@@ -34,14 +45,43 @@ export default function Text() {
       )} */}
       {/* player0's turn */}
       <br></br>
-      {text === 'Start' ? (
+      {text === 'Start' && playerTurn === 'Player0' ? (
         <button
           onClick={async (e) => {
             e.preventDefault();
             setText('Player0');
+            setNarration('Choose');
           }}
         >
           {player[0].name}'s turn
+        </button>
+      ) : (
+        ''
+      )}
+      {/* player1's turn */}
+      {text === 'Start' && playerTurn === 'Player1' ? (
+        <button
+          onClick={async (e) => {
+            e.preventDefault();
+            setText('Player1');
+            setNarration('Choose');
+          }}
+        >
+          {player[1].name}'s turn
+        </button>
+      ) : (
+        ''
+      )}
+      {/* player2's turn */}
+      {text === 'Start' && playerTurn === 'Player2' ? (
+        <button
+          onClick={async (e) => {
+            e.preventDefault();
+            setText('Player2');
+            setNarration('Choose');
+          }}
+        >
+          {player[2].name}'s turn
         </button>
       ) : (
         ''
@@ -56,6 +96,9 @@ export default function Text() {
       {text === 'Magic' ? <Magic /> : ''}
       {text === 'Item' ? <Item /> : ''}
       {text === 'TargetTech' ? <TargetTech /> : ''}
+      {text === 'TargetMagic' ? <TargetMagic /> : ''}
+
+
     </div>
   );
 }

@@ -48,11 +48,16 @@ export const PlayerProvider = (props) => {
         bothHands: 'crossbow',
       },
       techniques: {
-        concentrate: 2,
+        0: {
+          name: 'quick shot',
+          cost: '1',
+          damage: '2',
+        },
       },
       magic: {
         0: {
           name: 'cure',
+          damage: 5,
           cost: 1,
         },
       },

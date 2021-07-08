@@ -1,9 +1,15 @@
-import React, {useContext} from 'react';
+import React, {useContext, useEffect} from 'react';
 import {TextContext} from '../../../contexts/TextContext';
-import Attack from './Attack';
+import {AttackContext} from '../../../contexts/AttackContext';
+import {NarrationContext} from '../../../contexts/NarrationContext';
 
 export default function Player0() {
   const [text, setText] = useContext(TextContext);
+  const [attack, setAttack] = useContext(AttackContext);
+  const [narration, setNarration] = useContext(NarrationContext);
+  useEffect(() => {
+    // console.log(attack);
+  });
   return (
     <div>
       {/* back */}
@@ -11,6 +17,7 @@ export default function Player0() {
         onClick={(e) => {
           e.preventDefault();
           setText('Start');
+          setNarration('Start')
         }}
       >
         Back
@@ -22,6 +29,8 @@ export default function Player0() {
         onClick={(e) => {
           e.preventDefault();
           setText('Target');
+          setAttack({damage: 1, cost: 0});
+          setNarration('Target');
         }}
       >
         Attack
@@ -32,6 +41,7 @@ export default function Player0() {
         onClick={(e) => {
           e.preventDefault();
           setText('Techniques');
+          setNarration('Choose');
         }}
       >
         Technique
@@ -42,6 +52,7 @@ export default function Player0() {
         onClick={(e) => {
           e.preventDefault();
           setText('Magic');
+          setNarration('Choose');
         }}
       >
         Magic
@@ -52,6 +63,7 @@ export default function Player0() {
         onClick={(e) => {
           e.preventDefault();
           setText('Item');
+          setNarration('Choose');
         }}
       >
         Items

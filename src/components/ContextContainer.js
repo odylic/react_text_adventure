@@ -6,6 +6,9 @@ import {EnemyProvider} from '../contexts/EnemyContext';
 import {PlayerProvider} from '../contexts/PlayerContext';
 import {InventoryProvider} from '../contexts/InventoryContext';
 import {AttackProvider} from '../contexts/AttackContext';
+import {PlayerTurnProvider} from '../contexts/PlayerTurnContext';
+import {NarrationProvider} from '../contexts/NarrationContext';
+import {TargetProvider} from '../contexts/TargetContext';
 
 export default function ContextContainer() {
   return (
@@ -16,7 +19,13 @@ export default function ContextContainer() {
             <PlayerProvider>
               <EnemyProvider>
                 <AttackProvider>
-                  <App />
+                  <PlayerTurnProvider>
+                    <NarrationProvider>
+                      <TargetProvider>
+                        <App />
+                      </TargetProvider>
+                    </NarrationProvider>
+                  </PlayerTurnProvider>
                 </AttackProvider>
               </EnemyProvider>
             </PlayerProvider>

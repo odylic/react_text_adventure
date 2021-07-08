@@ -15,7 +15,7 @@
 }
 
 .Text {
-  grid-area: 1/5/13/8;
+  grid-area: 1/5/13/9;
   // border: 1px solid white;
 }
 
@@ -26,4 +26,8 @@
 
 .EnemyState {
   grid-area: 1/9/13/13;
+}
+
+.Narration { 
+  grid-area: 1/5/9/9;
 }

@@ -4,6 +4,7 @@ import {PlayerContext} from '../contexts/PlayerContext';
 import {PlayerTurnContext} from '../contexts/PlayerTurnContext';
 import {AttackContext} from '../contexts/AttackContext';
 import {TargetContext} from '../contexts/TargetContext';
+import {InventoryContext} from '../contexts/InventoryContext';
 
 export default function Narration() {
   const [narration, setNarration] = useContext(NarrationContext);
@@ -11,6 +12,9 @@ export default function Narration() {
   const [playerTurn, setPlayerTurn] = useContext(PlayerTurnContext);
   const [attack, setAttack] = useContext(AttackContext);
   const [target, setTarget] = useContext(TargetContext);
+  const {chosenArr, targetOfItemArr} = useContext(InventoryContext);
+  const [chosen, setChosen] = chosenArr;
+  const [targetOfItem, setTargetOfItem] = targetOfItemArr;
 
   useEffect(() => {
     // console.log('narration: ', narration);
@@ -23,6 +27,9 @@ export default function Narration() {
       {narration === 'Choose' ? 'What do you want to do?' : ''}
       {narration === 'Attacking'
         ? `${player[0].name} is attacking ${target.type} for ${attack.damage} damage`
+        : ''}
+      {narration === 'UseItem'
+        ? `${chosen[0]} used to heal ${targetOfItem[1].name} for ${chosen[1].effect} hp`
         : ''}
     </div>
   );

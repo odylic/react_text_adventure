@@ -33,16 +33,16 @@ return 'LoggedIn';
 
 // function SwitchCase(props) {
 // switch (props.value) {
-// case 'Start':
-// return 'You see enemies about to attack';
-// case 'Target':
-// return 'Which do you want to Target?';
-// case 'Choose':
-// return 'What do you want to do?';
-// case 'Attacking':
-// return `${player[0].name} is attacking ${target.type} for ${attack.damage} damage`;
-// }
-// }
+  // case 'Start':
+  // return 'You see enemies about to attack';
+  // case 'Target':
+  // return 'Which do you want to Target?';
+  // case 'Choose':
+  // return 'What do you want to do?';
+  // case 'Attacking':
+  // return `${player[0].name} is attacking ${target.type} for ${attack.damage} damage`;
+  // }
+  // }
 
 {/_ <SwitchCase value={narration} /> _/}
 
@@ -50,28 +50,28 @@ return 'LoggedIn';
 
 
 // function SwitchCase(props) {
-// switch (props.value) {
-// case 'EnterBattle':
-// return <EnterBattle />;
-// case 'Player0':
-// return <Player0 />;
-// case 'Attack':
-// return <Attack />;
-// case 'Target':
-// return <Target />;
-// case 'Player1':
-// return <Player1 />;
-// case 'Techniques':
-// return <Techniques />;
-// case 'Magic':
-// return <Magic />;
-// case 'Item':
-// return <Item />;
-// case 'TargetTech':
-// return <TargetTech />;
-// case 'TargetMagic':
-// return <TargetMagic />;
-// }
-// }
+  // switch (props.value) {
+    // case 'EnterBattle':
+    // return <EnterBattle />;
+    // case 'Player0':
+    // return <Player0 />;
+    // case 'Attack':
+    // return <Attack />;
+    // case 'Target':
+    // return <Target />;
+    // case 'Player1':
+    // return <Player1 />;
+    // case 'Techniques':
+    // return <Techniques />;
+    // case 'Magic':
+    // return <Magic />;
+    // case 'Item':
+    // return <Item />;
+    // case 'TargetTech':
+    // return <TargetTech />;
+    // case 'TargetMagic':
+    // return <TargetMagic />;
+    // }
+    // }
 
 

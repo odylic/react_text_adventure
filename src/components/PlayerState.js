@@ -4,7 +4,8 @@ import {InventoryContext} from '../contexts/InventoryContext';
 
 export default function PlayerState() {
   const [player, setPlayerState] = useContext(PlayerContext);
-  const [inventory, setInventory] = useContext(InventoryContext);
+  const {inventoryArr} = useContext(InventoryContext);
+  const [inventory, setInventory] = inventoryArr;
   const [view, setView] = useState('status');
   useEffect(() => {
     // console.log('player: ', player);
@@ -64,7 +65,7 @@ export default function PlayerState() {
           items:
           {Object.entries(inventory).map((item, index) => (
             <ul key={index}>
-              {item[0]}: {item[1]}
+              {item[0]}: {item[1].count}
             </ul>
           ))}
         </div>
@@ -79,9 +80,7 @@ export default function PlayerState() {
               {character.name} <br></br>
               helmet: {character.equipment.helmet} <br></br>
               {character.equipment.bothHands ? (
-                <div>
-                  both hands: {character.equipment.bothHands}
-                </div>
+                <div>both hands: {character.equipment.bothHands}</div>
               ) : (
                 <div>
                   right hand: {character.equipment.rightHand} <br></br>

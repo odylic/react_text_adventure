@@ -31,3 +31,11 @@
 .Narration { 
   grid-area: 1/5/9/9;
 }
+
+.Queue {
+  grid-area: 1/5/4/9;
+  display: flex;
+  .turn {
+    margin-right: 7px;
+  }
+}

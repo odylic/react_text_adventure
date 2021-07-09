@@ -3,6 +3,7 @@ import React, {useState, createContext} from 'react';
 export const PlayerContext = createContext();
 
 export const PlayerProvider = (props) => {
+  const [test, setTest] = useState();
   const [player, setPlayerState] = useState({
     0: {
       name: 'Ryu',

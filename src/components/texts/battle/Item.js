@@ -7,12 +7,14 @@ import {NarrationContext} from '../../../contexts/NarrationContext';
 
 export default function Item() {
   const [text, setText] = useContext(TextContext);
-  const [inventory, setInventory] = useContext(InventoryContext);
+  const {inventoryArr, chosenArr} = useContext(InventoryContext);
+  const [inventory, setInventory] = inventoryArr;
+  const [chosen, setChosen] = chosenArr;
   const [playerTurn, setPlayerTurn] = useContext(PlayerTurnContext);
   const [player, setPlayerState] = useContext(PlayerContext);
   const [narration, setNarration] = useContext(NarrationContext);
   useEffect(() => {
-    console.log();
+    console.log(inventory);
   });
   return (
     <div>
@@ -32,8 +34,18 @@ export default function Item() {
       <br></br>
       {Object.entries(inventory).map((item, index) => (
         <div key={index}>
-          <button>
-            {item[0]} : {item[1]}
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              // sets the chosen item
+              setChosen([item[0], item[1]]);
+              // set text to targetItem
+              setText('TargetItem');
+              setNarration('Target');
+            }}
+          >
+            {item[0]} : {item[1].count} <br></br>
+            {item[1].description}
           </button>
         </div>
       ))}

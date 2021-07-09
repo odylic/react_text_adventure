@@ -14,6 +14,8 @@ import TargetMagic from './texts/battle/TargetMagic';
 import {PlayerTurnContext} from '../contexts/PlayerTurnContext';
 import {NarrationContext} from '../contexts/NarrationContext';
 import {TargetContext} from '../contexts/TargetContext';
+import {InventoryContext} from '../contexts/InventoryContext';
+import TargetItem from './texts/battle/TargetItem';
 
 export default function Text() {
   const [text, setText] = useContext(TextContext);
@@ -21,7 +23,8 @@ export default function Text() {
   const [playerTurn, setPlayerTurn] = useContext(PlayerTurnContext);
   const [narration, setNarration] = useContext(NarrationContext);
   const [target, setTarget] = useContext(TargetContext);
-
+  const {inventoryArr} = useContext(InventoryContext);
+  const [inventory, setInventory] = inventoryArr;
 
   useEffect(() => {
     console.log('textState: ', text);
@@ -97,8 +100,7 @@ export default function Text() {
       {text === 'Item' ? <Item /> : ''}
       {text === 'TargetTech' ? <TargetTech /> : ''}
       {text === 'TargetMagic' ? <TargetMagic /> : ''}
-
-
+      {text === 'TargetItem' ? <TargetItem /> : ''}
     </div>
   );
 }

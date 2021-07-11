@@ -16,8 +16,16 @@ import {NarrationContext} from '../contexts/NarrationContext';
 import {TargetContext} from '../contexts/TargetContext';
 import {InventoryContext} from '../contexts/InventoryContext';
 import TargetItem from './texts/battle/TargetItem';
+import {QueueContext} from '../contexts/QueueContext';
+import End from './texts/battle/End';
+import Goo from './texts/battle/enemies/Goo';
+import Goblin from './texts/battle/enemies/Goblin';
+import Faerie from './texts/battle/enemies/Faerie';
 
 export default function Text() {
+  const {queueArr, currentArr} = useContext(QueueContext);
+  const [queue, setQueue] = queueArr;
+  const [currentTurn, setCurrentTurn] = currentArr;
   const [text, setText] = useContext(TextContext);
   const [player, setPlayerState] = useContext(PlayerContext);
   const [playerTurn, setPlayerTurn] = useContext(PlayerTurnContext);
@@ -30,6 +38,7 @@ export default function Text() {
     console.log('textState: ', text);
     // console.log('target:', target);
     // console.log('playerTurn:', playerTurn);
+    console.log('currentTurn: ', currentTurn);
   });
   return (
     <div className="Text">
@@ -48,7 +57,7 @@ export default function Text() {
       )} */}
       {/* player0's turn */}
       <br></br>
-      {text === 'Start' && playerTurn === 'Player0' ? (
+      {text === 'Start' && currentTurn === 'Ryu' ? (
         <button
           onClick={async (e) => {
             e.preventDefault();
@@ -62,7 +71,7 @@ export default function Text() {
         ''
       )}
       {/* player1's turn */}
-      {text === 'Start' && playerTurn === 'Player1' ? (
+      {text === 'Start' && currentTurn === 'Marle' ? (
         <button
           onClick={async (e) => {
             e.preventDefault();
@@ -76,7 +85,7 @@ export default function Text() {
         ''
       )}
       {/* player2's turn */}
-      {text === 'Start' && playerTurn === 'Player2' ? (
+      {text === 'Start' && currentTurn === 'Player2' ? (
         <button
           onClick={async (e) => {
             e.preventDefault();
@@ -89,7 +98,12 @@ export default function Text() {
       ) : (
         ''
       )}
+      {/* enemy turns */}
+      {text === 'Start' && currentTurn === 'goo' ? <Goo /> : ''}
+      {text === 'Start' && currentTurn === 'goblin' ? <Goblin /> : ''}
+      {text === 'Start' && currentTurn === 'faerie' ? <Goblin /> : ''}
 
+      {/* battle choices */}
       {text === 'EnterBattle' ? <EnterBattle /> : ''}
       {text === 'Player0' ? <Player0 /> : ''}
       {text === 'Attack' ? <Attack /> : ''}
@@ -101,6 +115,7 @@ export default function Text() {
       {text === 'TargetTech' ? <TargetTech /> : ''}
       {text === 'TargetMagic' ? <TargetMagic /> : ''}
       {text === 'TargetItem' ? <TargetItem /> : ''}
+      {text === 'End' ? <End /> : ''}
     </div>
   );
 }

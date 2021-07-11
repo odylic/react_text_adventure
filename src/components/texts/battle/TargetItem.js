@@ -7,8 +7,12 @@ import {PlayerTurnContext} from '../../../contexts/PlayerTurnContext';
 import {NarrationContext} from '../../../contexts/NarrationContext';
 import {TargetContext} from '../../../contexts/TargetContext';
 import {InventoryContext} from '../../../contexts/InventoryContext';
+import {QueueContext} from '../../../contexts/QueueContext';
 
 export default function TargetItem() {
+  const {queueArr, currentArr} = useContext(QueueContext);
+  const [queue, setQueue] = queueArr;
+  const [currentTurn, setCurrentTurn] = currentArr;
   const [text, setText] = useContext(TextContext);
   const [player, setPlayerState] = useContext(PlayerContext);
   const [enemy, setEnemyState] = useContext(EnemyContext);
@@ -69,7 +73,7 @@ export default function TargetItem() {
               // set targetOfItem
               setTargetOfItem([character[0], character[1]]);
               // set text
-
+              setText('End');
               // set narration
               setNarration('UseItem');
             }}

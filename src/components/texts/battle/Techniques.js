@@ -4,8 +4,12 @@ import {PlayerContext} from '../../../contexts/PlayerContext';
 import {AttackContext} from '../../../contexts/AttackContext';
 import {PlayerTurnContext} from '../../../contexts/PlayerTurnContext';
 import {NarrationContext} from '../../../contexts/NarrationContext';
+import {QueueContext} from '../../../contexts/QueueContext';
 
 export default function Techniques() {
+  const {queueArr, currentArr} = useContext(QueueContext);
+  const [queue, setQueue] = queueArr;
+  const [currentTurn, setCurrentTurn] = currentArr;
   const [text, setText] = useContext(TextContext);
   const [player, setPlayerState] = useContext(PlayerContext);
   const [attack, setAttack] = useContext(AttackContext);
@@ -31,7 +35,7 @@ export default function Techniques() {
       <br></br>
       <br></br>
       {/* render player0's techs */}
-      {playerTurn === 'Player0' ? (
+      {currentTurn === 'Ryu' ? (
         <div>
           {Object.values(player[0].techniques).map((technique, index) => (
             <div key={index}>
@@ -40,7 +44,7 @@ export default function Techniques() {
                   e.preventDefault();
                   setText('TargetTech');
                   setAttack(technique);
-                  setNarration('Target')
+                  setNarration('Target');
                 }}
               >
                 {technique.name} <br></br>
@@ -55,7 +59,7 @@ export default function Techniques() {
         ''
       )}
       {/* render player1's techs */}
-      {playerTurn === 'Player1' ? (
+      {currentTurn === 'Marle' ? (
         <div>
           {Object.values(player[1].techniques).map((technique, index) => (
             <div key={index}>
@@ -64,7 +68,7 @@ export default function Techniques() {
                   e.preventDefault();
                   setText('TargetTech');
                   setAttack(technique);
-                  setNarration('Target')
+                  setNarration('Target');
                 }}
               >
                 {technique.name} <br></br>

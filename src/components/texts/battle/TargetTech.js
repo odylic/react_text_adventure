@@ -6,8 +6,12 @@ import {AttackContext} from '../../../contexts/AttackContext';
 import {PlayerTurnContext} from '../../../contexts/PlayerTurnContext';
 import {NarrationContext} from '../../../contexts/NarrationContext';
 import {TargetContext} from '../../../contexts/TargetContext';
+import {QueueContext} from '../../../contexts/QueueContext';
 
 export default function Techniques() {
+  const {queueArr, currentArr} = useContext(QueueContext);
+  const [queue, setQueue] = queueArr;
+  const [currentTurn, setCurrentTurn] = currentArr;
   const [text, setText] = useContext(TextContext);
   const [player, setPlayerState] = useContext(PlayerContext);
   const [enemy, setEnemyState] = useContext(EnemyContext);
@@ -33,7 +37,7 @@ export default function Techniques() {
       <br></br>
       <br></br>
       {/* renders player0's mana cost and damage*/}
-      {playerTurn === 'Player0' ? (
+      {currentTurn === 'Ryu' ? (
         <div>
           {Object.values(enemy).map((monster, index) => (
             <div key={index}>
@@ -59,6 +63,7 @@ export default function Techniques() {
                   }));
                   setNarration('Attacking');
                   setTarget(enemy[index]);
+                  setText('End');
                 }}
               >
                 Enemy {index + 1}
@@ -72,7 +77,7 @@ export default function Techniques() {
         ''
       )}
       {/* renders player1's mana cost and damage*/}
-      {playerTurn === 'Player1' ? (
+      {currentTurn === 'Marle' ? (
         <div>
           {Object.values(enemy).map((monster, index) => (
             <div key={index}>
@@ -98,6 +103,7 @@ export default function Techniques() {
                   }));
                   setNarration('Attacking');
                   setTarget(enemy[index]);
+                  setText('End');
                 }}
               >
                 Enemy {index + 1}

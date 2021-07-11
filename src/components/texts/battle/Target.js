@@ -6,8 +6,12 @@ import {AttackContext} from '../../../contexts/AttackContext';
 import {PlayerTurnContext} from '../../../contexts/PlayerTurnContext';
 import {NarrationContext} from '../../../contexts/NarrationContext';
 import {TargetContext} from '../../../contexts/TargetContext';
+import {QueueContext} from '../../../contexts/QueueContext';
 
 export default function Target() {
+  const {queueArr, currentArr} = useContext(QueueContext);
+  const [queue, setQueue] = queueArr;
+  const [currentTurn, setCurrentTurn] = currentArr;
   const [text, setText] = useContext(TextContext);
   const [player, setPlayerState] = useContext(PlayerContext);
   const [enemy, setEnemyState] = useContext(EnemyContext);
@@ -55,10 +59,11 @@ export default function Target() {
                   mana: prevState[0].mana - attack.cost,
                 },
               }));
-              setText('Start');
+              setText('End');
               setPlayerTurn('Player1');
               setNarration('Attacking');
-              setTarget(enemy[index])
+              setTarget(enemy[index]);
+
             }}
           >
             Enemy {index + 1}

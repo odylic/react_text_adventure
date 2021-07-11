@@ -9,6 +9,7 @@ import {AttackProvider} from '../contexts/AttackContext';
 import {PlayerTurnProvider} from '../contexts/PlayerTurnContext';
 import {NarrationProvider} from '../contexts/NarrationContext';
 import {TargetProvider} from '../contexts/TargetContext';
+import {QueueProvider} from '../contexts/QueueContext';
 
 export default function ContextContainer() {
   return (
@@ -22,7 +23,9 @@ export default function ContextContainer() {
                   <PlayerTurnProvider>
                     <NarrationProvider>
                       <TargetProvider>
-                        <App />
+                        <QueueProvider>
+                          <App />
+                        </QueueProvider>
                       </TargetProvider>
                     </NarrationProvider>
                   </PlayerTurnProvider>

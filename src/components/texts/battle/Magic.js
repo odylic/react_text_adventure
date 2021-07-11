@@ -4,8 +4,12 @@ import {PlayerContext} from '../../../contexts/PlayerContext';
 import {AttackContext} from '../../../contexts/AttackContext';
 import {PlayerTurnContext} from '../../../contexts/PlayerTurnContext';
 import {NarrationContext} from '../../../contexts/NarrationContext';
+import {QueueContext} from '../../../contexts/QueueContext';
 
 export default function Magic() {
+  const {queueArr, currentArr} = useContext(QueueContext);
+  const [queue, setQueue] = queueArr;
+  const [currentTurn, setCurrentTurn] = currentArr;
   const [text, setText] = useContext(TextContext);
   const [player, setPlayerState] = useContext(PlayerContext);
   const [attack, setAttack] = useContext(AttackContext);
@@ -29,7 +33,7 @@ export default function Magic() {
       <br></br>
       <br></br>
       {/* renders player0's magic */}
-      {playerTurn === 'Player0' ? (
+      {currentTurn === 'Ryu' ? (
         <div>
           {Object.values(player[0].magic).map((spell, index) => (
             <div key={index}>
@@ -53,7 +57,7 @@ export default function Magic() {
         ''
       )}
       {/* renders player1's magic */}
-      {playerTurn === 'Player1' ? (
+      {currentTurn === 'Marle' ? (
         <div>
           {Object.values(player[1].magic).map((spell, index) => (
             <div key={index}>

@@ -1,7 +1,7 @@
 import React, {useEffect, useState, useContext} from 'react';
 import {EnemyContext} from '../contexts/EnemyContext';
-import Goo from './enemies/Goo';
-import Goblin from './enemies/Goblin';
+import Goo from './texts/battle/enemies/Goo';
+import Goblin from './texts/battle/enemies/Goblin';
 
 export default function EnemyState() {
   // initial state set in EnemyContext

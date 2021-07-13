@@ -39,6 +39,17 @@ export default function Narration() {
         ? `${chosen[0]} used to heal ${targetOfItem[1].name} for ${chosen[1].effect} hp`
         : ''}
       {narration === 'End' ? `Who's next?` : ''}
+      {narration === 'EnemyAttacking' ? `${currentTurn} is attacking` : ''}
+      {narration === 'AttackRyu'
+        ? `goo attacks Ryu for ${attack.damage} damage`
+        : ''}
+      {narration === 'AttackMarle'
+        ? `${currentTurn} attacks Marle for ${attack.damage} damage`
+        : ''}
+      {narration === 'Healing'
+        ? `${currentTurn} heals ${target[1].name} for ${attack.damage} hp`
+        : ''}
+      {narration === 'GooQuivers' ? `${currentTurn} quivers emphatically` : ''}
     </div>
   );
 }

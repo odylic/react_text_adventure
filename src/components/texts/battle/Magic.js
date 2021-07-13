@@ -64,7 +64,7 @@ export default function Magic() {
               <button
                 onClick={(e) => {
                   e.preventDefault();
-                  setText('TargetMagic');
+                  setText('TargetMagicHeal');
                   setAttack(spell);
                   setNarration('Target');
                 }}

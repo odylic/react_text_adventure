@@ -21,6 +21,7 @@ import End from './texts/battle/End';
 import Goo from './texts/battle/enemies/Goo';
 import Goblin from './texts/battle/enemies/Goblin';
 import Faerie from './texts/battle/enemies/Faerie';
+import TargetMagicHeal from './texts/battle/TargetMagicHeal';
 
 export default function Text() {
   const {queueArr, currentArr} = useContext(QueueContext);
@@ -101,7 +102,7 @@ export default function Text() {
       {/* enemy turns */}
       {text === 'Start' && currentTurn === 'goo' ? <Goo /> : ''}
       {text === 'Start' && currentTurn === 'goblin' ? <Goblin /> : ''}
-      {text === 'Start' && currentTurn === 'faerie' ? <Goblin /> : ''}
+      {text === 'Start' && currentTurn === 'faerie' ? <Faerie /> : ''}
 
       {/* battle choices */}
       {text === 'EnterBattle' ? <EnterBattle /> : ''}
@@ -116,6 +117,7 @@ export default function Text() {
       {text === 'TargetMagic' ? <TargetMagic /> : ''}
       {text === 'TargetItem' ? <TargetItem /> : ''}
       {text === 'End' ? <End /> : ''}
+      {text === 'TargetMagicHeal' ? <TargetMagicHeal /> : ''}
     </div>
   );
 }

@@ -14,11 +14,13 @@ export default function End() {
       <button
         onClick={(e) => {
           e.preventDefault();
+          // continues the queue
           setCurrentTurn(queue[1]);
           let temp = queue[0];
           setQueue([...queue.slice(1), temp]);
           setText('Start');
           setNarration('End');
+          
         }}
       >
         Next

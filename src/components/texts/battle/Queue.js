@@ -13,15 +13,16 @@ export default function Queue() {
 
   const temp = [];
   const playerEntries = Object.entries(player);
-  playerEntries.map((entries, index) => {
-    temp.push(entries[1].name);
-  });
   const enemyEntries = Object.entries(enemy);
+  playerEntries.map((entries, index) => {
+    if (entries[1].hp > 0) temp.push(entries[1].name);
+  });
   enemyEntries.map((entries, index) => {
-    temp.push(entries[1].type);
+    if (entries[1].hp > 0) temp.push(entries[1].type);
   });
 
   useEffect(() => {
+    // console.log(temp);
     // setQueue(tempObj);
     // console.log(tempObj);
     // adding this [] makes useEffect only run once, but otherwise, setQueue in useEffect keeps making it rerender

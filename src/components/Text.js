@@ -22,6 +22,8 @@ import Goo from './texts/battle/enemies/Goo';
 import Goblin from './texts/battle/enemies/Goblin';
 import Faerie from './texts/battle/enemies/Faerie';
 import TargetMagicHeal from './texts/battle/TargetMagicHeal';
+import Story from './texts/story/Story';
+import Town from './texts/story/Town';
 
 export default function Text() {
   const {queueArr, currentArr} = useContext(QueueContext);
@@ -36,10 +38,10 @@ export default function Text() {
   const [inventory, setInventory] = inventoryArr;
 
   useEffect(() => {
-    console.log('textState: ', text);
+    // console.log('textState: ', text);
     // console.log('target:', target);
     // console.log('playerTurn:', playerTurn);
-    console.log('currentTurn: ', currentTurn);
+    // console.log('currentTurn: ', currentTurn);
   });
   return (
     <div className="Text">
@@ -118,6 +120,8 @@ export default function Text() {
       {text === 'TargetItem' ? <TargetItem /> : ''}
       {text === 'End' ? <End /> : ''}
       {text === 'TargetMagicHeal' ? <TargetMagicHeal /> : ''}
+      {text === 'Story' ? <Story /> : ''}
+      {text === 'Town' ? <Town /> : ''}
     </div>
   );
 }

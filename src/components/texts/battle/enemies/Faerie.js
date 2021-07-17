@@ -16,7 +16,7 @@ export default function Faerie() {
   const [currentTurn, setCurrentTurn] = currentArr;
   const [attack, setAttack] = useContext(AttackContext);
   useEffect(() => {
-    // console.log(enemy);
+    console.log(enemy);
   });
 
   return (
@@ -79,6 +79,7 @@ export default function Faerie() {
           const randomNum = Math.floor(Math.random() * length);
 
           // console.log(randomNum);
+
           actions[randomNum]();
         }}
       >

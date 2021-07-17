@@ -26,7 +26,7 @@ export default function Narration() {
   });
   return (
     <div className="Narration">
-      {narration === 'Start' ? 'You see enemies about to attack' : ''}
+      {narration === 'BattleStart' ? 'You see enemies about to attack' : ''}
       {narration === 'Target' ? 'Which do you want to target?' : ''}
       {narration === 'Choose' ? 'What do you want to do?' : ''}
       {narration === 'Attacking' && currentTurn === 'Ryu'
@@ -50,6 +50,10 @@ export default function Narration() {
         ? `${currentTurn} heals ${target[1].name} for ${attack.damage} hp`
         : ''}
       {narration === 'GooQuivers' ? `${currentTurn} quivers emphatically` : ''}
+      {narration === 'Start' ? 'You wake up' : ''}
+      {narration === 'Fight' ? 'Enter the ring' : ''}
+      {narration === 'Town' ? 'You enter the town' : ' '}
+      {narration === 'Home' ? 'You go back home' : ''}
     </div>
   );
 }

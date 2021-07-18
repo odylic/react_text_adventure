@@ -50,3 +50,11 @@
     text-decoration: none;
   }
 }
+
+.Save {
+  grid-area: 1/10/2/12;
+
+  button {
+    padding: 10px;
+  }
+}

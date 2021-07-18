@@ -8,6 +8,9 @@ const PORT = 4000;
 app.use(express.static(__dirname + '/public'));
 const passport = require('passport');
 require('./passport');
+const sqlRouter = require('./server/routers/sqlRouter');
+
+app.use('/sql', sqlRouter);
 
 app.get('/ping', (req, res) => {
   res.json({message: 'pong'});

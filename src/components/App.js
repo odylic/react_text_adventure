@@ -6,6 +6,7 @@ import EnemyStatus from './EnemyState';
 import Narration from './Narration';
 import Queue from './texts/battle/Queue';
 import {ViewContext} from '../contexts/ViewContext';
+import Save from './Save';
 
 function App() {
   const [view, setView] = useContext(ViewContext);
@@ -16,6 +17,7 @@ function App() {
           <PlayerStatus />
           <Text />
           <Narration />
+          <Save />
         </div>
       ) : (
         ''

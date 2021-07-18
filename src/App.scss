@@ -39,3 +39,14 @@
     margin: 0 7px;
   }
 }
+
+.login {
+  grid-area: 5/5/9/9;
+  border: 1px solid white;
+  padding: 20px;
+  border-radius: 5px;
+
+  a {
+    text-decoration: none;
+  }
+}

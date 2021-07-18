@@ -9,6 +9,9 @@ app.use(express.static(__dirname + '/public'));
 const passport = require('passport');
 require('./passport');
 const sqlRouter = require('./server/routers/sqlRouter');
+const cookieParser = require('cookie-parser');
+app.use(cookieParser());
+const cookieSession = require('cookie-session');
 
 app.use('/sql', sqlRouter);
 
@@ -28,6 +31,13 @@ app.get('/app', (req, res) => {
   res.sendFile(path.resolve(__dirname, './public/index.html'));
 });
 
+app.use(
+  cookieSession({
+    name: 'session-name',
+    keys: ['key1', 'key2'],
+  })
+);
+
 //Configure Passport
 app.use(passport.initialize());
 app.use(passport.session());
@@ -42,6 +52,7 @@ app.get(
   '/auth/google/callback',
   passport.authenticate('google', {failureRedirect: '/failed'}),
   function (req, res) {
+    res.cookie('google_id', req.session.id)
     res.redirect('/app');
   }
 );

@@ -30,4 +30,36 @@ sqlController.addTextState = async (req, res, next) => {
   }
 };
 
+sqlController.addNarrationState = async (req, res, next) => {
+  const addNarrationState = `
+  UPDATE google_user
+  SET narration_state = $1
+  WHERE google_id = '${req.cookies.google_id}'
+  `;
+  const narrationState = [req.body.narration_state];
+  try {
+    await db.query(addNarrationState, narrationState);
+    return next();
+  } catch (error) {
+    console.log(error);
+    return next(error);
+  }
+};
+
+sqlController.addPlayerState = async (req, res, next) => {
+  const addPlayerState = `
+  UPDATE google_user
+  SET player_state = $1
+  WHERE google_id = '${req.cookies.google_id}'
+  `;
+  const playerState = [req.body.player_state];
+  try {
+    await db.query(addPlayerState, playerState);
+    return next();
+  } catch (error) {
+    console.log(error);
+    return next(error);
+  }
+};
+
 module.exports = sqlController;

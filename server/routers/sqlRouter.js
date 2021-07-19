@@ -6,8 +6,14 @@ router.get('/text', sqlController.getGoogleId, (req, res) => {
   res.status(200).json(res.locals.response.rows);
 });
 
-router.put('/text', sqlController.addTextState, (req, res) => {
-  res.status(200).json();
-});
+router.put(
+  '/text',
+  sqlController.addTextState,
+  sqlController.addNarrationState,
+  sqlController.addPlayerState,
+  (req, res) => {
+    res.status(200).json();
+  }
+);
 
 module.exports = router;

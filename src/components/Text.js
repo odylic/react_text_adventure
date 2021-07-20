@@ -26,6 +26,7 @@ import Story from './texts/story/Story';
 import Town from './texts/story/Town';
 import {EnemyContext} from '../contexts/EnemyContext';
 import {ViewContext} from '../contexts/ViewContext';
+import EndScreen from './texts/battle/EndScreen';
 
 export default function Text() {
   const {queueArr, currentArr} = useContext(QueueContext);
@@ -54,13 +55,13 @@ export default function Text() {
       deadArray.push(monster.dead);
     });
     let endBattle = deadArray.every((status) => status === true);
-    // condition if endBattle is true, change view to story mode where they were before the battle
-    if (endBattle) {
-      setView('Story');
-      setNarration('Town');
-      setText('Town');
-    }
 
+    // condition if endBattle is true, change view to story mode where they were before the battle
+    if (endBattle && view === 'Battle') {
+      setView('Story');
+      setNarration('EndScreen');
+      setText('EndScreen');
+    }
     // console.log(enemy);
     // console.log(player);
     let temp = [];
@@ -73,9 +74,8 @@ export default function Text() {
       if (!monster.dead) temp.push(monster.type);
     });
 
-
     // Don't have working yet, but replace queue when monster dies and update to the latest current turn
-    
+
     // if (temp[0] !== currentTurn) {
     //   let tempVar = temp[0];
     //   temp = [...temp.slice(1), tempVar];
@@ -84,6 +84,7 @@ export default function Text() {
     // console.log(currentTurn);
     // setQueue(temp);
   }, [player, enemy]);
+
   return (
     <div className="Text">
       {/* button to setText  */}
@@ -163,6 +164,7 @@ export default function Text() {
       {text === 'TargetMagicHeal' ? <TargetMagicHeal /> : ''}
       {text === 'Story' ? <Story /> : ''}
       {text === 'Town' ? <Town /> : ''}
+      {text === 'EndScreen' ? <EndScreen /> : ''}
     </div>
   );
 }

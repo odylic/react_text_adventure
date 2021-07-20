@@ -54,6 +54,14 @@ export default function Narration() {
       {narration === 'Fight' ? 'Enter the ring' : ''}
       {narration === 'Town' ? 'You enter the town' : ' '}
       {narration === 'Home' ? 'You go back home' : ''}
+      {narration === 'EndScreen' ? (
+        <div>
+          Ryu gains 10 exp 5 sp<br></br>
+          Marle gains 10 exp 5 sp
+        </div>
+      ) : (
+        ''
+      )}
     </div>
   );
 }

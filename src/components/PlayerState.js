@@ -50,8 +50,10 @@ export default function PlayerState() {
               <br></br>
               lvl : {character.lvl} <br></br>
               hp: {character.hp} <br></br>
-              exp: {character.exp} <br></br>
               mana: {character.mana > 0 ? character.mana : 0} <br></br>
+              exp: {character.exp} <br></br>
+              sp: {character.sp}
+              <br></br>
               <br></br>
             </div>
           ))}

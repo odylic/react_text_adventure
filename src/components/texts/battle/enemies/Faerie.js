@@ -16,7 +16,7 @@ export default function Faerie() {
   const [currentTurn, setCurrentTurn] = currentArr;
   const [attack, setAttack] = useContext(AttackContext);
   useEffect(() => {
-    console.log(enemy);
+    // console.log(enemy);
   });
 
   return (

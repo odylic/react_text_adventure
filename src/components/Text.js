@@ -24,6 +24,8 @@ import Faerie from './texts/battle/enemies/Faerie';
 import TargetMagicHeal from './texts/battle/TargetMagicHeal';
 import Story from './texts/story/Story';
 import Town from './texts/story/Town';
+import {EnemyContext} from '../contexts/EnemyContext';
+import {ViewContext} from '../contexts/ViewContext';
 
 export default function Text() {
   const {queueArr, currentArr} = useContext(QueueContext);
@@ -36,13 +38,52 @@ export default function Text() {
   const [target, setTarget] = useContext(TargetContext);
   const {inventoryArr} = useContext(InventoryContext);
   const [inventory, setInventory] = inventoryArr;
+  const [enemy, setEnemyState] = useContext(EnemyContext);
+  const [view, setView] = useContext(ViewContext);
 
   useEffect(() => {
     // console.log('textState: ', text);
     // console.log('target:', target);
     // console.log('playerTurn:', playerTurn);
     // console.log('currentTurn: ', currentTurn);
-  });
+    // create an array to see if all monsters are dead to end battle
+
+    // turned to dead state in End.js
+    const deadArray = [];
+    Object.values(enemy).map((monster, index) => {
+      deadArray.push(monster.dead);
+    });
+    let endBattle = deadArray.every((status) => status === true);
+    // condition if endBattle is true, change view to story mode where they were before the battle
+    if (endBattle) {
+      setView('Story');
+      setNarration('Town');
+      setText('Town');
+    }
+
+    // console.log(enemy);
+    // console.log(player);
+    let temp = [];
+    // console.log('queue:', queue);
+    // condition if dead, rebuild queue without the dead character/monster
+    Object.values(player).map((character, index) => {
+      if (!character.dead) temp.push(character.name);
+    });
+    Object.values(enemy).map((monster, index) => {
+      if (!monster.dead) temp.push(monster.type);
+    });
+
+
+    // Don't have working yet, but replace queue when monster dies and update to the latest current turn
+    
+    // if (temp[0] !== currentTurn) {
+    //   let tempVar = temp[0];
+    //   temp = [...temp.slice(1), tempVar];
+    // }
+    // console.log(temp);
+    // console.log(currentTurn);
+    // setQueue(temp);
+  }, [player, enemy]);
   return (
     <div className="Text">
       {/* button to setText  */}

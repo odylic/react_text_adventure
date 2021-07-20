@@ -6,6 +6,7 @@ export const PlayerProvider = (props) => {
   const [test, setTest] = useState();
   const [player, setPlayerState] = useState({
     0: {
+      dead: false,
       name: 'Ryu',
       lvl: 1,
       hp: 10,
@@ -38,6 +39,7 @@ export const PlayerProvider = (props) => {
       },
     },
     1: {
+      dead: false,
       name: 'Marle',
       lvl: 1,
       hp: 8,

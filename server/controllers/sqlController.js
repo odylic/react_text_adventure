@@ -62,4 +62,36 @@ sqlController.addPlayerState = async (req, res, next) => {
   }
 };
 
+sqlController.addInventoryState = async (req, res, next) => {
+  const addInventoryState = `
+  UPDATE google_user
+  SET inventory_state = $1
+  WHERE google_id = '${req.cookies.google_id}'
+  `;
+  const inventoryState = [req.body.inventory_state];
+  try {
+    await db.query(addInventoryState, inventoryState);
+    return next();
+  } catch (error) {
+    console.log(error);
+    return next(error);
+  }
+};
+
+sqlController.addViewState = async (req, res, next) => {
+  const addViewState = `
+  UPDATE google_user
+  SET view_state = $1
+  WHERE google_id = '${req.cookies.google_id}'
+  `;
+  const viewState = [req.body.view_state];
+  try {
+    await db.query(addViewState, viewState);
+    return next();
+  } catch (error) {
+    console.log(error);
+    return next(error);
+  }
+};
+
 module.exports = sqlController;

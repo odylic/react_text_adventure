@@ -11,6 +11,8 @@ router.put(
   sqlController.addTextState,
   sqlController.addNarrationState,
   sqlController.addPlayerState,
+  sqlController.addInventoryState,
+  sqlController.addViewState,
   (req, res) => {
     res.status(200).json();
   }

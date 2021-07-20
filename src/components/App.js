@@ -29,6 +29,7 @@ function App() {
           <Text />
           <PlayerStatus />
           <EnemyStatus />
+          <Save />
         </div>
       ) : (
         ''

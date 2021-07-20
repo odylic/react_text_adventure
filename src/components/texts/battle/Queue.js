@@ -57,7 +57,10 @@ export default function Queue() {
           }}
         >
           Queue Shift
-        </button>
+        </button>{' '}
+        <br></br>
+        <br></br>
+        Current Turn: {currentTurn}
       </div>
     </div>
   );

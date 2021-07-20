@@ -6,7 +6,7 @@ export const EnemyProvider = (props) => {
   const [enemy, setEnemyState] = useState({
     0: {
       type: 'goo',
-      hp: 5,
+      hp: 2,
       dead: false,
     },
     1: {
@@ -14,16 +14,16 @@ export const EnemyProvider = (props) => {
       hp: 8,
       dead: false,
     },
-    2: {
-      type: 'faerie',
-      hp: 2,
-      dead: false,
-    },
-    3: {
-      type: 'goo',
-      hp: 5,
-      dead: false,
-    },
+    // 2: {
+    //   type: 'faerie',
+    //   hp: 2,
+    //   dead: false,
+    // },
+    // 3: {
+    //   type: 'goo',
+    //   hp: 5,
+    //   dead: false,
+    // },
   });
 
   return (

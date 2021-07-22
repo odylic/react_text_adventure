@@ -35,6 +35,21 @@ export default function Narration() {
       {narration === 'Attacking' && currentTurn === 'Marle'
         ? `${player[1].name} is attacking ${target.type} for ${attack.damage} damage`
         : ''}
+      {narration === 'CriticalHit' && currentTurn === 'Ryu'
+        ? `${
+            player[0].name
+          } performed a critical hit by timing it perfectly, attacking for ${
+            2 * attack.damage
+          } damage`
+        : ''}
+      {narration === 'CriticalHit' && currentTurn === 'Marle'
+        ? `${
+            player[1].name
+          } performed a critical hit by timing it perfectly, attacking for ${
+            2 * attack.damage
+          } damage`
+        : ''}
+
       {narration === 'UseItem'
         ? `${chosen[0]} used to heal ${targetOfItem[1].name} for ${chosen[1].effect} hp`
         : ''}

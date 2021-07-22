@@ -59,14 +59,11 @@ export default function Save() {
       <button
         onClick={(e) => {
           e.preventDefault();
-          if (view === 'Battle') setView('Story');
-          if (view === 'Story') setView('Battle');
-          if (text === 'Start') setText('Story');
-          if (text === 'Story') setText('Start');
-          // setText('Start');
+          if (view === 'Story') setView('Menu');
+          if (view === 'Menu') setView('Story');
         }}
       >
-        Change View
+        Menu
       </button>
     </div>
   );

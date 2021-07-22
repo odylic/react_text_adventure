@@ -19,6 +19,16 @@ export default function Target() {
   const [playerTurn, setPlayerTurn] = useContext(PlayerTurnContext);
   const [narration, setNarration] = useContext(NarrationContext);
   const [target, setTarget] = useContext(TargetContext);
+  let startTime;
+  let timedHit;
+
+  window.startTimer = function () {
+    startTime = new Date();
+  };
+  window.reportTime = function () {
+    timedHit = new Date() - startTime;
+  };
+
   useEffect(() => {
     // console.log(attack);
   });
@@ -40,17 +50,40 @@ export default function Target() {
       {Object.values(enemy).map((monster, index) => (
         <div key={index}>
           <button
+            onMouseDown={(e) => {
+              e.preventDefault();
+              startTimer();
+            }}
+            onMouseUp={(e) => {
+              e.preventDefault();
+              reportTime();
+            }}
             onClick={(e) => {
               e.preventDefault();
-              // damage to enemy
-              setEnemyState((prevState) => ({
-                ...prevState,
-                // use [] to have it recognize as a variable
-                [index]: {
-                  ...enemy[index],
-                  hp: enemy[index].hp - attack.damage,
-                },
-              }));
+
+              if (timedHit >= 1000 && timedHit <= 1500) {
+                // damage to enemy
+                setNarration('CriticalHit');
+                setEnemyState((prevState) => ({
+                  ...prevState,
+                  // use [] to have it recognize as a variable
+                  [index]: {
+                    ...enemy[index],
+                    hp: enemy[index].hp - 2 * attack.damage,
+                  },
+                }));
+              } else {
+                // damage to enemy
+                setNarration('Attacking');
+                setEnemyState((prevState) => ({
+                  ...prevState,
+                  // use [] to have it recognize as a variable
+                  [index]: {
+                    ...enemy[index],
+                    hp: enemy[index].hp - attack.damage,
+                  },
+                }));
+              }
               // mana cost to player
               setPlayerState((prevState) => ({
                 ...prevState,
@@ -61,9 +94,9 @@ export default function Target() {
               }));
               setText('End');
               setPlayerTurn('Player1');
-              setNarration('Attacking');
-              setTarget(enemy[index]);
 
+              setTarget(enemy[index]);
+              console.log(timedHit);
             }}
           >
             Enemy {index + 1}

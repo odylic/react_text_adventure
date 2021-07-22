@@ -7,11 +7,20 @@ import Narration from './Narration';
 import Queue from './texts/battle/Queue';
 import {ViewContext} from '../contexts/ViewContext';
 import Save from './Save';
+import Menu from './menu/Menu';
 
 function App() {
   const [view, setView] = useContext(ViewContext);
   return (
     <div className="App">
+      {view === 'Menu' ? (
+        <div className="grid">
+          <Save />
+          <Menu />
+        </div>
+      ) : (
+        ''
+      )}
       {view === 'Story' ? (
         <div className="grid">
           <PlayerStatus />
